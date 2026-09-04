@@ -1,0 +1,47 @@
+{
+  "color": "Carolina-Blue",
+  "engine": "PhoenixEngine / EinsteinEngine",
+  "operators": [
+    {
+      "name": "SystematicsOp",
+      "module": "systematics_operator",
+      "class": "SystematicsOperator",
+      "version": "1.0",
+      "dependencies": [],
+      "engine_flags": { "runtime": true }
+    },
+    {
+      "name": "EinsteinHarmonizer",
+      "module": "einstein_harmonizer",
+      "class": "EinsteinHarmonizer",
+      "version": "1.0",
+      "dependencies": [
+        "PhoenixEinsteinBridge",
+        "EinsteinRunner",
+        "SystematicsPlate"
+      ],
+      "engine_flags": { "runtime": true }
+    },
+    {
+      "name": "CombinedAnalysisPlate",
+      "module": "combined_analysis_plate",
+      "class": "CombinedAnalysisPlate",
+      "version": "1.0",
+      "dependencies": [],
+      "engine_flags": { "contract": true }
+    },
+    {
+      "name": "HiggsSUSYPipeline",
+      "module": "higgs_susy_pipeline",
+      "class": "HiggsSUSYPipeline",
+      "version": "1.0",
+      "dependencies": ["CombinedAnalysisCycle", "SystematicsOperator"],
+      "engine_flags": { "runtime": true }
+    }
+  ],
+  "notes": [
+    "Runtime operators execute every harmonize() call.",
+    "Contract plates declare shape invariants but do not execute.",
+    "Registry introspection validates module/class existence."
+  ]
+}
